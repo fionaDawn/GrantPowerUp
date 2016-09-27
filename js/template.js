@@ -43,15 +43,16 @@ var getEndorsment = function(t) {
 var writeComment = function(t){
   console.log(JSON.stringify(t.card('name')));
   console.log(JSON.stringify(t.card('name').get('name')));
-  console.log(JSON.stringify(t.card('comments').get('comments')));
-  return t.card('comments')
-  .get('comments')
+  console.log(JSON.stringify(t.card('desc').get('desc')));
+  return t.card('desc')
+  .get('desc')
   .then(function(cardName){
     var icon = WHITE_ICON;
     var lowercaseName = cardName.toLowerCase();
     console.log("TEST " + lowercaseName);
     return [{
-      text: 'Endorsed'
+      name: 'State: '
+      desc: 'Endorsed'
     }];
   })
 };
