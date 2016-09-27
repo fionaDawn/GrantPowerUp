@@ -280,15 +280,15 @@ TrelloPowerUp.initialize({
     }
   },
   'format-url': function(t, options) {
-    var parkName = formatNPSUrl(t, options.url);
-    if(parkName){
+    // var parkName = formatNPSUrl(t, options.url);
+    // if(parkName){
       return {
         icon: GRAY_ICON,
-        text: parkName
+        text: '@erwinencabo'
       };
-    } else {
-      throw t.NotHandled();
-    }
+    // } else {
+    //   throw t.NotHandled();
+    // }
   },
   'show-settings': function(t, options){
     return t.popup({
