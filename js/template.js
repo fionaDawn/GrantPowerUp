@@ -41,7 +41,7 @@ var getEndorsment = function(t) {
 }
 
 var writeComment = function(t){
-  console.log(JSON.stringify(t.card));
+  console.log(JSON.stringify(t.card('name')));
   console.log(JSON.stringify(t.card('name').get('name')));
   console.log(JSON.stringify(t.card('comments').get('comments')));
   return t.card('comments')
@@ -57,6 +57,8 @@ var writeComment = function(t){
 };
 
 var getBadges = function(t){
+  console.log(JSON.stringify(t.card('name')));
+  console.log(JSON.stringify(t.card('name').get('name')));
   return t.card('name')
   .get('name')
   .then(function(cardName){
