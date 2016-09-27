@@ -30,7 +30,7 @@ var getEndorsment = function(t) {
     console.log("STATE: " + endorsmentState[state]);
     return {
       text: endorsmentState[state],
-      callback: writeComment
+      callback: getBadges
     };
   });
 
@@ -49,25 +49,46 @@ var writeComment = function(t){
   .then(function(cardName){
     var icon = WHITE_ICON;
     var lowercaseName = cardName.toLowerCase();
-    console.log("TEST " + lowercaseName);
     return [{
-      name: 'State: ',
-      desc: 'Endorsed'
+      name: lowercaseName + " name",
+      description: lowercaseName + " desc",
+      text: badgeText
     }];
   })
 };
 
 var getBadges = function(t){
-  return t.card('name')
-  .get('name')
+  return t.card('desc')
+  .get('desc')
   .then(function(cardName){
+    var badgeColor, badgeText;
+    var icon = GRAY_ICON;
+    var lowercaseName = cardName.toLowerCase();
+    if(lowercaseName.indexOf('does not fulfill') > -1){
+      badgeColor = 'red';
+      badgeText = 'does not fulfill';
+      icon = WHITE_ICON;
+    } else if(lowercaseName.indexOf('fulfills') > -1){
+      badgeColor = 'green';
+      badgeText = 'fulfills';
+      icon = WHITE_ICON;
+    } else if(lowercaseName.indexOf('strongly fulfills') > -1){
+      badgeColor = 'yellow';
+      badgeText = 'strongly fulfills';
+      icon = WHITE_ICON;
+    }
 
-    return [{
-      title: 'Detail Badge', // for detail badges only
-      text: 'Static',
-      icon: WHITE_ICON, // for card front badges only
-      color: 'yellow'
-    }];
+    if(lowercaseName.indexOf('static') > -1){
+      // return an array of badge objects
+      return [{
+        title: 'Detail Badge', // for detail badges only
+        text: badgeText,
+        icon: icon, // for card front badges only
+        color: badgeColor
+      }];
+    } else {
+      return [];
+    }
   })
 };
 
