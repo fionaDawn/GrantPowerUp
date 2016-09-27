@@ -19,6 +19,12 @@ var parkMap = {
   zion: 'Zion National Park'
 };
 
+var endorsmentState = {
+  red: 'does not fulfill',
+  green: 'fulfills',
+  yellow: 'strongly fulfills'
+}
+
 var getBadges = function(t){
   return t.card('name')
   .get('name')
@@ -112,28 +118,21 @@ var boardButtonCallback = function(t){
 };
 
 var cardButtonCallback = function(t){
-  var items = Object.keys(parkMap).map(function(parkCode){
-    var urlForCode = 'http://www.nps.gov/' + parkCode + '/';
+  var items = Object.keys(endorsmentState).map(function(state){
     return {
-      text: parkMap[parkCode],
-      url: urlForCode,
+      text: endorsmentState[state],
       callback: function(t){
-        return t.attach({ url: urlForCode, name: parkMap[parkCode] })
-        .then(function(){
-          return t.closePopup();
-        })
+        return [{
+          text: endorsmentState[state],
+          color: 'yellow'
+        }];
       }
     };
   });
 
   return t.popup({
     title: 'Popup Search Example',
-    items: items,
-    search: {
-      count: 5,
-      placeholder: 'Search National Parks',
-      empty: 'No parks found'
-    }
+    items: items
   });
 };
 
@@ -192,7 +191,7 @@ TrelloPowerUp.initialize({
   'board-buttons': function(t, options){
     return [{
       icon: WHITE_ICON,
-      text: 'Template',
+      text: 'Grant',
       callback: boardButtonCallback
     }];
   },
@@ -202,7 +201,7 @@ TrelloPowerUp.initialize({
   'card-buttons': function(t, options) {
     return [{
       icon: GRAY_ICON,
-      text: 'Template',
+      text: 'Grant',
       callback: cardButtonCallback
     }];
   },
