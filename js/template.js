@@ -49,6 +49,8 @@ var writeComment = function(t){
     return [{
       text: "@erwinencabo"
     }];
+  }).then(function(){
+    return t.closePopup();
   })
 };
 
