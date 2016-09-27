@@ -2,6 +2,7 @@
 
 var WHITE_ICON = './images/icon-white.svg';
 var GRAY_ICON = './images/icon-gray.svg';
+var STATE = '';
 
 var parkMap = {
   acad: 'Acadia National Park',
@@ -27,10 +28,10 @@ var endorsmentState = {
 
 var getEndorsment = function(t, options) {
   var items = Object.keys(endorsmentState).map(function(state){
-    console.log("STATE: " + endorsmentState[state]);
+    STATE = state;
     return {
       text: endorsmentState[state],
-      callback: writeComment(t, state)
+      callback: writeComment
     };
   });
 
@@ -57,7 +58,7 @@ var getEndorsment = function(t, options) {
 //   })
 // };
 
-var writeComment = function(t, state){
+var writeComment = function(t){
   return t.card('desc')
   .get('desc')
   .then(function(cardName){
@@ -80,15 +81,16 @@ var writeComment = function(t, state){
     // badgeColor = state;
     // bad
     // if (icon == WHITE_ICON) {
+    if (STATE !== '') {
       return [{
           title: 'Detail Badge', // for detail badges only
-          text: endorsmentState[state],
+          text: endorsmentState[STATE],
           icon: WHITE_ICON, // for card front badges only
-          color: state
+          color: STATE
         }];
-      // } else {
-      //   return [];
-      // }
+      } else {
+        return [];
+      }
   })
 };
 
