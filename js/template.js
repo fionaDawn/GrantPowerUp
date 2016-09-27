@@ -30,7 +30,7 @@ var getEndorsment = function(t) {
     console.log("STATE: " + endorsmentState[state]);
     return {
       text: endorsmentState[state],
-      callback: getBadges
+      callback: writeComment
     };
   });
 
@@ -51,10 +51,7 @@ var writeComment = function(t){
     var lowercaseName = cardName.toLowerCase();
     console.log("TEST " + lowercaseName);
     return [{
-      title: 'Detail Badge', // for detail badges only
-      text: 'Endorsed',
-      icon: icon, // for card front badges only
-      color: 'yellow'
+      text: 'Endorsed'
     }];
   })
 };
