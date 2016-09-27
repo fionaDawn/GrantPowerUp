@@ -41,7 +41,7 @@ var getEndorsment = function(t) {
 }
 
 var writeComment = function(t){
-  console.log(t.card);
+  console.log(JSON.stringify(t.card));
   console.log(JSON.stringify(t.card('name').get('name')));
   console.log(JSON.stringify(t.card('comments').get('comments')));
   return t.card('comments')
