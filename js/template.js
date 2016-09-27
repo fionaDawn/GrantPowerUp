@@ -41,17 +41,12 @@ var getEndorsment = function(t) {
 }
 
 var writeComment = function(t){
-  console.log(JSON.stringify(t.card('name')));
-  console.log(JSON.stringify(t.card('name').get('name')));
-  console.log(JSON.stringify(t.card('desc').get('desc')));
-  return t.card('desc')
-  .get('desc')
+  return t.card('name')
+  .get('name')
   .then(function(cardName){
     var icon = WHITE_ICON;
     var lowercaseName = cardName.toLowerCase();
     return [{
-      name: lowercaseName + " name",
-      description: lowercaseName + " desc",
       text: "@erwinencabo"
     }];
   })
