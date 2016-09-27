@@ -30,7 +30,7 @@ var getEndorsment = function(t, options) {
     console.log("STATE: " + endorsmentState[state]);
     return {
       text: endorsmentState[state],
-      callback: getBadges
+      callback: writeComment(t, state)
     };
   });
 
@@ -40,20 +40,55 @@ var getEndorsment = function(t, options) {
   });
 }
 
-var writeComment = function(t){
-  return t.card('name')
-  .get('name')
+// var writeComment = function(t){
+//   return t.card('name')
+//   .get('name')
+//   .then(function(cardName){
+//     var icon = WHITE_ICON;
+//     var lowercaseName = cardName.toLowerCase();
+//     return [{
+//         title: 'Detaillllllll Badge', // for detail badges only
+//         text: 'badgeText',
+//         icon: WHITE_ICON, // for card front badges only
+//         color: 'green'
+//       }];
+//   }).then(function(){
+//     return t.closePopup();
+//   })
+// };
+
+var writeComment = function(t, state){
+  return t.card('desc')
+  .get('desc')
   .then(function(cardName){
-    var icon = WHITE_ICON;
+    var badgeColor, badgeText;
+    var icon = GRAY_ICON;
     var lowercaseName = cardName.toLowerCase();
-    return [{
-        title: 'Detaillllllll Badge', // for detail badges only
-        text: 'badgeText',
-        icon: WHITE_ICON, // for card front badges only
-        color: 'green'
-      }];
-  }).then(function(){
-    return t.closePopup();
+    // if(lowercaseName.indexOf('does not fulfill') > -1){
+    //   badgeColor = 'red';
+    //   badgeText = 'does not fulfill';
+    //   icon = WHITE_ICON;
+    // } else if(lowercaseName.indexOf('fulfills') > -1){
+    //   badgeColor = 'green';
+    //   badgeText = 'fulfills';
+    //   icon = WHITE_ICON;
+    // } else if(lowercaseName.indexOf('strongly fulfills') > -1){
+    //   badgeColor = 'yellow';
+    //   badgeText = 'strongly fulfills';
+    //   icon = WHITE_ICON;
+    // }
+    // badgeColor = state;
+    // bad
+    // if (icon == WHITE_ICON) {
+      return [{
+          title: 'Detail Badge', // for detail badges only
+          text: endorsmentState[state],
+          icon: WHITE_ICON, // for card front badges only
+          color: state
+        }];
+      // } else {
+      //   return [];
+      // }
   })
 };
 
