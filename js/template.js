@@ -41,15 +41,17 @@ var getEndorsment = function(t, options) {
 }
 
 var writeComment = function(t){
-  return t.card('desc')
-  .get('desc')
+  return t.card('name')
+  .get('name')
   .then(function(cardName){
     var icon = WHITE_ICON;
     var lowercaseName = cardName.toLowerCase();
     return [{
-      text: '@erwinencabo'
-
-    }];
+        title: 'Detaillllllll Badge', // for detail badges only
+        text: 'badgeText',
+        icon: WHITE_ICON, // for card front badges only
+        color: 'green'
+      }];
   }).then(function(){
     return t.closePopup();
   })
