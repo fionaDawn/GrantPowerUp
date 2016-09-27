@@ -58,8 +58,8 @@ var writeComment = function(t){
 };
 
 var getBadges = function(t){
-  return t.card('name')
-  .get('name')
+  return t.card('desc')
+  .get('desc')
   .then(function(cardName){
     var badgeColor, badgeText;
     var icon = GRAY_ICON;
@@ -79,7 +79,7 @@ var getBadges = function(t){
     }
     return [{
         title: 'Detail Badge', // for detail badges only
-        text: 'badgeText',
+        text: badgeText,
         icon: icon, // for card front badges only
         color: badgeColor
       }];
