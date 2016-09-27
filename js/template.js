@@ -30,7 +30,7 @@ var getEndorsment = function(t) {
     console.log("STATE: " + state);
     return {
       text: endorsmentState[state],
-      callback: return writeComment(t);
+      callback: writeComment(t)
     };
   });
 
