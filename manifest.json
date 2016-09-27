@@ -7,7 +7,6 @@
   },
   "author": "Savvysherpa Inc",
   "capabilities": [
-    "attachment-sections",
     "board-buttons",
     "callback",
     "card-badges",
