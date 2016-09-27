@@ -25,7 +25,7 @@ var endorsmentState = {
   yellow: 'strongly fulfills'
 }
 
-var getEndorsment = function(t) {
+var getEndorsment = function(t, options) {
   var items = Object.keys(endorsmentState).map(function(state){
     console.log("STATE: " + endorsmentState[state]);
     return {
@@ -79,7 +79,7 @@ var getBadges = function(t){
     }
     return [{
         title: 'Detail Badge', // for detail badges only
-        text: badgeText,
+        text: 'badgeText',
         icon: icon, // for card front badges only
         color: badgeColor
       }];
