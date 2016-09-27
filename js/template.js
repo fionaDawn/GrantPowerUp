@@ -30,7 +30,7 @@ var getEndorsment = function(t) {
     console.log("STATE: " + state);
     return {
       text: endorsmentState[state],
-      callback: writeComment(t)
+      callback: writeComment
     };
   });
 
@@ -234,7 +234,7 @@ TrelloPowerUp.initialize({
     return [{
       icon: GRAY_ICON,
       text: 'Grant',
-      callback: cardButtonCallback
+      callback: getEndorsment
     }];
   },
   'card-detail-badges': function(t, options) {
