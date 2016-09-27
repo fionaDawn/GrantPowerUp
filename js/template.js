@@ -30,7 +30,7 @@ var getEndorsment = function(t, options) {
     console.log("STATE: " + endorsmentState[state]);
     return {
       text: endorsmentState[state],
-      callback: writeComment
+      callback: getBadges
     };
   });
 
@@ -64,19 +64,19 @@ var getBadges = function(t){
     var badgeColor, badgeText;
     var icon = GRAY_ICON;
     var lowercaseName = cardName.toLowerCase();
-    if(lowercaseName.indexOf('does not fulfill') > -1){
+    // if(lowercaseName.indexOf('does not fulfill') > -1){
       badgeColor = 'red';
       badgeText = 'does not fulfill';
       icon = WHITE_ICON;
-    } else if(lowercaseName.indexOf('fulfills') > -1){
-      badgeColor = 'green';
-      badgeText = 'fulfills';
-      icon = WHITE_ICON;
-    } else if(lowercaseName.indexOf('strongly fulfills') > -1){
-      badgeColor = 'yellow';
-      badgeText = 'strongly fulfills';
-      icon = WHITE_ICON;
-    }
+    // } else if(lowercaseName.indexOf('fulfills') > -1){
+    //   badgeColor = 'green';
+    //   badgeText = 'fulfills';
+    //   icon = WHITE_ICON;
+    // } else if(lowercaseName.indexOf('strongly fulfills') > -1){
+    //   badgeColor = 'yellow';
+    //   badgeText = 'strongly fulfills';
+    //   icon = WHITE_ICON;
+    // }
     return [{
         title: 'Detail Badge', // for detail badges only
         text: 'badgeText',
