@@ -193,7 +193,7 @@ TrelloPowerUp.initialize({
         id: 'Yellowstone', // optional if you aren't using a function for the title
         claimed: claimed,
         icon: GRAY_ICON,
-        title: 'Example Attachment Section: Yellowstone',
+        title: 'Example Attachment Section: Yellowstone @erwinencabo ',
         content: {
           type: 'iframe',
           url: t.signUrl('./section.html', { arg: 'you can pass your section args here' }),
