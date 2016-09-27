@@ -77,13 +77,17 @@ var getBadges = function(t){
       badgeText = 'strongly fulfills';
       icon = WHITE_ICON;
     }
-    return [{
-        title: 'Detail Badge', // for detail badges only
-        text: badgeText,
-        icon: icon, // for card front badges only
-        color: badgeColor
-      }];
 
+    if (icon == WHITE_ICON) {
+      return [{
+          title: 'Detail Badge', // for detail badges only
+          text: badgeText,
+          icon: icon, // for card front badges only
+          color: badgeColor
+        }];
+      } else {
+        return [];
+      }
   })
 };
 
