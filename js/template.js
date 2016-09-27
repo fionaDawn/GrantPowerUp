@@ -46,10 +46,10 @@ var writeComment = function(t){
   .then(function(cardName){
     var icon = WHITE_ICON;
     var lowercaseName = cardName.toLowerCase();
-    return {
+    return [{
       text: '@erwinencabo'
 
-    };
+    }];
   }).then(function(){
     return t.closePopup();
   })
