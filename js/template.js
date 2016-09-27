@@ -241,14 +241,18 @@ TrelloPowerUp.initialize({
     return getBadges(t);
   },
   'card-from-url': function(t, options) {
-    var parkName = formatNPSUrl(t, options.url);
-    if(parkName){
-      return {
-        name: parkName,
-        desc: 'An awesome park: ' + options.url
-      };
-    } else {
-      throw t.NotHandled();
+    // var parkName = formatNPSUrl(t, options.url);
+    // if(parkName){
+    //   return {
+    //     name: parkName,
+    //     desc: 'An awesome park: ' + options.url
+    //   };
+    // } else {
+    //   throw t.NotHandled();
+    // }
+    return {
+      name: 'Test name',
+      desc: 'Hi @fiona'
     }
   },
   'format-url': function(t, options) {
