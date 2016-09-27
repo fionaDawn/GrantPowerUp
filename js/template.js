@@ -27,7 +27,7 @@ var endorsmentState = {
 
 var getEndorsment = function(t) {
   var items = Object.keys(endorsmentState).map(function(state){
-    console.log("STATE: " + state);
+    console.log("STATE: " + endorsmentState[state]);
     return {
       text: endorsmentState[state],
       callback: writeComment
@@ -41,6 +41,7 @@ var getEndorsment = function(t) {
 }
 
 var writeComment = function(t){
+  console.log(t.card);
   return t.card('comments')
   .get('comments')
   .then(function(cardName){
