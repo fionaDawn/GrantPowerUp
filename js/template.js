@@ -58,8 +58,8 @@ var writeComment = function(t){
 };
 
 var getBadges = function(t){
-  return t.card('desc')
-  .get('desc')
+  return t.card('name')
+  .get('name')
   .then(function(cardName){
     var badgeColor, badgeText;
     var icon = GRAY_ICON;
@@ -77,18 +77,13 @@ var getBadges = function(t){
       badgeText = 'strongly fulfills';
       icon = WHITE_ICON;
     }
-
-    if(lowercaseName.indexOf('static') > -1){
-      // return an array of badge objects
-      return [{
+    return [{
         title: 'Detail Badge', // for detail badges only
         text: badgeText,
         icon: icon, // for card front badges only
         color: badgeColor
       }];
-    } else {
-      return [];
-    }
+
   })
 };
 
