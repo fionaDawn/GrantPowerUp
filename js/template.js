@@ -30,12 +30,12 @@ var getEndorsment = function(t) {
     console.log("STATE: " + endorsmentState[state]);
     return {
       text: endorsmentState[state],
-      callback: writeComment
+      callback: getBadges
     };
   });
 
   return t.popup({
-    title: 'Popup Search Example',
+    title: 'Choose Endorsment State',
     items: items
   });
 }
