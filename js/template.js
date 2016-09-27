@@ -52,7 +52,7 @@ var writeComment = function(t){
     return [{
       name: lowercaseName + " name",
       description: lowercaseName + " desc",
-      text: badgeText
+      text: "@erwinencabo"
     }];
   })
 };
