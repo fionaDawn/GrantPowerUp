@@ -47,7 +47,10 @@ var writeComment = function(t){
     var icon = WHITE_ICON;
     var lowercaseName = cardName.toLowerCase();
     return [{
-      text: "@erwinencabo"
+      title: 'Detail Badge', // for detail badges only
+      text: '@erwinencabo',
+      icon: icon, // for card front badges only
+      color: 'red'
     }];
   }).then(function(){
     return t.closePopup();
