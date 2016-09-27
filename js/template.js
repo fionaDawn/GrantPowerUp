@@ -59,12 +59,16 @@ var getEndorsment = function(t, options) {
 // };
 
 var writeComment = function(t){
+  console.log (
+    'CARD: ' + t.get('card')
+  )
   return t.card('desc')
   .get('desc')
   .then(function(cardName){
     var badgeColor, badgeText;
     var icon = GRAY_ICON;
     var lowercaseName = cardName.toLowerCase();
+    // t.set('card', )
     // if(lowercaseName.indexOf('does not fulfill') > -1){
     //   badgeColor = 'red';
     //   badgeText = 'does not fulfill';
@@ -81,16 +85,16 @@ var writeComment = function(t){
     // badgeColor = state;
     // bad
     // if (icon == WHITE_ICON) {
-    if (STATE !== '') {
-      return [{
-          title: 'Detail Badge', // for detail badges only
-          text: endorsmentState[STATE],
-          icon: WHITE_ICON, // for card front badges only
-          color: STATE
-        }];
-      } else {
+    // if (STATE !== '') {
+    //   return [{
+    //       title: 'Detail Badge', // for detail badges only
+    //       text: endorsmentState[STATE],
+    //       icon: WHITE_ICON, // for card front badges only
+    //       color: STATE
+    //     }];
+    //   } else {
         return [];
-      }
+      // }
   })
 };
 
@@ -280,15 +284,15 @@ TrelloPowerUp.initialize({
     }
   },
   'format-url': function(t, options) {
-    // var parkName = formatNPSUrl(t, options.url);
-    // if(parkName){
+    var parkName = formatNPSUrl(t, options.url);
+    if(parkName){
       return {
         icon: GRAY_ICON,
-        text: '@erwinencabo'
+        text: parkName
       };
-    // } else {
-    //   throw t.NotHandled();
-    // }
+    } else {
+      throw t.NotHandled();
+    }
   },
   'show-settings': function(t, options){
     return t.popup({
