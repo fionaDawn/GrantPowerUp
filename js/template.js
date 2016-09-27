@@ -25,6 +25,37 @@ var endorsmentState = {
   yellow: 'strongly fulfills'
 }
 
+var getEndorsment = function(t) {
+  var items = Object.keys(endorsmentState).map(function(state){
+    console.log("STATE: " + state);
+    return {
+      text: endorsmentState[state],
+      callback: return writeComment(t);
+    };
+  });
+
+  return t.popup({
+    title: 'Popup Search Example',
+    items: items
+  });
+}
+
+var writeComment = function(t){
+  return t.card('comments')
+  .get('comments')
+  .then(function(cardName){
+    var icon = WHITE_ICON;
+    var lowercaseName = cardName.toLowerCase();
+    console.log("TEST " + lowercaseName);
+    return [{
+      title: 'Detail Badge', // for detail badges only
+      text: 'Endorsed',
+      icon: icon, // for card front badges only
+      color: 'yellow'
+    }];
+  })
+};
+
 var getBadges = function(t){
   return t.card('name')
   .get('name')
@@ -122,10 +153,11 @@ var cardButtonCallback = function(t){
     return {
       text: endorsmentState[state],
       callback: function(t){
-        return [{
-          text: endorsmentState[state],
-          color: 'yellow'
-        }];
+        return t.attach({ url: urlForCode, name: parkMap[parkCode] })
+        .then(function(){
+          return t.closePopup();
+        })
+
       }
     };
   });
