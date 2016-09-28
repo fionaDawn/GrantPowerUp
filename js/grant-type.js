@@ -7,7 +7,7 @@ var gTypeSelector = document.getElementById('grant-type');
 
 t.render(function(){
   return Promise.all([
-    t.get('card', 'private', 'gType'),
+    t.get('card', 'private', 'gType')
   ])
   .spread(function(savedGtype){
     if(savedGtype && /[a-z]+/.test(savedGtype)){
