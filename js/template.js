@@ -121,7 +121,7 @@ var getBadges = function(t){
       } else if (grantType) {
       return [{
           title: 'Grant Type',
-          text: grantType
+          text: '<a href="http://www.w3schools.com">' + grantType + '</a>'
         }];
       } else {
         return [];
