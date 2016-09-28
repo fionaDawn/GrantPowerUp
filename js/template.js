@@ -48,7 +48,8 @@ var getBadges = function(t){
     var badgeText = endorsmentState[STATE];
     var badgeColor = STATE;
 
-    if (STATE !== '') {
+    // if (STATE !== '') {
+    if (cardName == 'Grant Ash')
       STATE = '';
       return [{
           text: badgeText,
