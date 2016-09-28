@@ -60,7 +60,7 @@ var getEndorsment = function(t, options) {
 
 var writeComment = function(t){
   console.log (
-    'CARD: ' + t.get('card')
+    'CARD: ' + t.get('card').value
   )
   return t.card('desc')
   .get('desc')
@@ -68,7 +68,7 @@ var writeComment = function(t){
     var badgeColor, badgeText;
     var icon = GRAY_ICON;
     var lowercaseName = cardName.toLowerCase();
-    // t.set('card', )
+    t.set('card', 'desc', 'fulfills');
     // if(lowercaseName.indexOf('does not fulfill') > -1){
     //   badgeColor = 'red';
     //   badgeText = 'does not fulfill';
