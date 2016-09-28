@@ -36,7 +36,7 @@ var popupEndorse = function(t) {
 
 var popupPropose = function(t) {
   return t.popup({
-      title: 'Choose Endorsment State',
+      title: 'Actions'
       items: [{
           text: 'Grant Type',
           callback: function (t) {
@@ -48,15 +48,12 @@ var popupPropose = function(t) {
         },
         {
           text: 'Purpose',
-          callback: function(t) {
-										t.popup({
-											title: "Nested Options",
-											items: [
-												{text: "Link",url:"https://developers.trello.com/"},
-												{text: "Link",url:"https://developers.trello.com/"}]
-
-										});
-									}
+          callback: function (t) {
+            t.popup({
+              url: './grant-type.html',
+              height: 184
+            })
+          }
         },
         {
             text: 'Proposal',
@@ -92,16 +89,19 @@ var cardButtonCallback = function(t) {
 
 var getBadges = function(t){
   var stateVal = '';
-  var grantType;
+  var grantType, purpose;
   return Promise.all([
     t.get('card', 'private', 'pipz'),
-    t.get('card', 'private', 'gType')
+    t.get('card', 'private', 'gType'),
+    t.get('card', 'private', 'purpose')
   ])
-  .spread(function(savedPipz, savedGtype){
+  .spread(function(savedPipz, savedGtype, savedPurpose){
     if(savedPipz && /[a-z]+/.test(savedPipz)){
       stateVal = savedPipz;
     } else if(savedGtype && /[a-z]+/.test(savedGtype)){
       grantType = savedGtype;
+    } else if(savedPurpose && /[a-z]+/.test(savedPurpose)){
+      purpose = savedPurpose;
     }
 
   }).then(function(){
@@ -119,16 +119,27 @@ var getBadges = function(t){
           icon: WHITE_ICON
         }];
       } else if (grantType) {
-      return [{
-          title: 'Grant Type',
-          text: grantType,
+        return [{
+            title: 'Grant Type',
+            text: grantType,
+            callback: function (t) {
+              t.popup({
+                url: './grant-type.html',
+                height: 184
+              })
+            }
+          }];
+      } else if (purpose) {
+        return [{
+          title: 'Purpose',
+          text: purpose,
           callback: function (t) {
             t.popup({
-              url: './grant-type.html',
+              url: './purpose.html',
               height: 184
             })
           }
-        }];
+        }]
       } else {
         return [];
       }
