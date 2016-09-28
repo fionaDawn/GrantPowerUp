@@ -32,7 +32,10 @@ var getEndorsment = function(t, options) {
   .get('name')
   .then(function(listName){
     console.log ("LISTNAME: " + listName);
-    var popupVal = {};
+    var popupVal = {
+      title: 'Please fill in required fields',
+      items: []
+    };
     var endorseItems =  [{
         text: 'Endorse',
         callback: function (t) {
