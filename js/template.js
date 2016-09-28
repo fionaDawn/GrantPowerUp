@@ -1,5 +1,5 @@
 /* global TrelloPowerUp */
-
+var Promise = TrelloPowerUp.Promise;
 var WHITE_ICON = './images/icon-white.svg';
 var GRAY_ICON = './images/icon-gray.svg';
 var STATE = '';
