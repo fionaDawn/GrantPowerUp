@@ -26,7 +26,7 @@ var endorsmentState = {
   yellow: 'strongly fulfills'
 }
 
-var popupEndorse = function() {
+var popupEndorse = function(t) {
   var endorseItems =  [{
       text: 'Endorse',
       callback: function (t) {
@@ -51,7 +51,7 @@ var getEndorsment = function(t, options) {
 
 
     if (listName == 'Qualify') {
-      popupEndorse();
+      popupEndorse(t);
     } else {
       [];
     }
