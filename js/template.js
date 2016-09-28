@@ -172,15 +172,10 @@ TrelloPowerUp.initialize({
     return getBadges(t);
   },
   'card-from-url': function(t, options) {
-    var parkName = formatNPSUrl(t, options.url);
-    if(parkName){
       return {
-        name: parkName,
+        name: 'Test',
         desc: 'An awesome park: ' + options.url
       };
-    } else {
-      throw t.NotHandled();
-    }
     // return {
     //   name: 'Test name',
     //   desc: 'Hi @fiona'
