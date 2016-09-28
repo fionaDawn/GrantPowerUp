@@ -27,7 +27,10 @@ var endorsmentState = {
 }
 
 var getEndorsment = function(t, options) {
-  var items =  [{
+  var popupVal = {};
+  var listName = t.list('name').get('name');
+  console.log ("LISTNAME: " + listName);
+  var endorseItems =  [{
       text: 'Endorse',
       callback: function (t) {
         t.popup({
@@ -35,12 +38,16 @@ var getEndorsment = function(t, options) {
           height: 184
         })
       }
-    }]
+    }];
 
-  return t.popup({
-    title: 'Choose Endorsment State',
-    items: items
-  });
+  if (listName == 'Qualify') {
+    popupVal = {
+        title: 'Choose Endorsment State',
+        items: endorseItems
+      }
+  }
+
+  return t.popup(popupVal);
 }
 
 var getBadges = function(t){
@@ -53,7 +60,7 @@ var getBadges = function(t){
       stateVal = savedPipz;
     }
   }).then(function(){
-    if (stateVal == 'does not fullfill')
+    if (stateVal == 'does not fulfill')
       badgeColor = 'red';
     else if (stateVal == 'fulfills')
       badgeColor = 'green';
