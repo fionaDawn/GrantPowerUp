@@ -92,13 +92,18 @@ var cardButtonCallback = function(t) {
 
 var getBadges = function(t){
   var stateVal = '';
+  var grantType;
   return Promise.all([
     t.get('card', 'private', 'pipz'),
+    t.get('card', 'private', 'gType')
   ])
-  .spread(function(savedPipz){
+  .spread(function(savedPipz, savedGtype){
     if(savedPipz && /[a-z]+/.test(savedPipz)){
       stateVal = savedPipz;
+    } else if(savedGtype && /[a-z]+/.test(savedGtype)){
+      grantType = savedGtype;
     }
+
   }).then(function(){
     if (stateVal !== '') {
       if (stateVal == 'does not fulfill')
@@ -112,6 +117,11 @@ var getBadges = function(t){
           text: stateVal,
           color: badgeColor,
           icon: WHITE_ICON
+        }];
+      } else if (grantType) {
+      return [{
+          title: 'Grant Type',
+          text: grantType
         }];
       } else {
         return [];
