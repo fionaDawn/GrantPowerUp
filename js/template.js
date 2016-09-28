@@ -2,7 +2,6 @@
 var Promise = TrelloPowerUp.Promise;
 var WHITE_ICON = './images/icon-white.svg';
 var GRAY_ICON = './images/icon-gray.svg';
-var STATE = '';
 
 var parkMap = {
   acad: 'Acadia National Park',
@@ -19,12 +18,6 @@ var parkMap = {
   yose: 'Yosemite National Park',
   zion: 'Zion National Park'
 };
-
-var endorsmentState = {
-  red: 'does not fulfill',
-  green: 'fulfills',
-  yellow: 'strongly fulfills'
-}
 
 var popupEndorse = function(t) {
   var endorseItems =  [{
@@ -43,8 +36,7 @@ var popupEndorse = function(t) {
     })
 }
 
-var getEndorsment = function(t, options) {
-
+var cardButtonCallback = function(t) {
   return t.list('name')
   .get('name')
   .then(function(listName){
@@ -69,14 +61,14 @@ var getBadges = function(t){
       stateVal = savedPipz;
     }
   }).then(function(){
-    if (stateVal == 'does not fulfill')
-      badgeColor = 'red';
-    else if (stateVal == 'fulfills')
-      badgeColor = 'green';
-    else if (stateVal == 'strongly fulfills')
-      badgeColor = 'yellow';
-
     if (stateVal !== '') {
+      if (stateVal == 'does not fulfill')
+        badgeColor = 'red';
+      else if (stateVal == 'fulfills')
+        badgeColor = 'green';
+      else if (stateVal == 'strongly fulfills')
+        badgeColor = 'yellow';
+
       return [{
           text: stateVal,
           color: badgeColor,
@@ -101,54 +93,9 @@ var formatNPSUrl = function(t, url){
 };
 
 var boardButtonCallback = function(t){
-  return t.popup({
-    title: 'Popup List Example',
-    items: [
-      {
-        text: 'Open Overlay',
-        callback: function(t){
-          return t.overlay({
-            url: './overlay.html',
-            args: { rand: (Math.random() * 100).toFixed(0) }
-          })
-          .then(function(){
-            return t.closePopup();
-          });
-        }
-      },
-      {
-        text: 'Open Board Bar',
-        callback: function(t){
-          return t.boardBar({
-            url: './board-bar.html',
-            height: 200
-          })
-          .then(function(){
-            return t.closePopup();
-          });
-        }
-      }
-    ]
-  });
-};
-
-var cardButtonCallback = function(t){
-  var items = Object.keys(endorsmentState).map(function(state){
-    return {
-      text: endorsmentState[state],
-      callback: function(t){
-        return t.attach({ url: urlForCode, name: parkMap[parkCode] })
-        .then(function(){
-          return t.closePopup();
-        })
-
-      }
-    };
-  });
-
-  return t.popup({
-    title: 'Popup Search Example',
-    items: items
+  return t.boardBar({
+    url: './board-bar.html',
+    height: 200
   });
 };
 
@@ -218,7 +165,7 @@ TrelloPowerUp.initialize({
     return [{
       icon: GRAY_ICON,
       text: 'Grant',
-      callback: getEndorsment
+      callback: cardButtonCallback
     }];
   },
   'card-detail-badges': function(t, options) {
