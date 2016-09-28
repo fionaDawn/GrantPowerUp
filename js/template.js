@@ -62,7 +62,7 @@ var getBadges = function(t){
     var badgeColor = STATE;
 
     // if (STATE !== '') {
-    if (cardName == 'Grant Ash')
+    if (cardName == 'Grant Ash') {
       STATE = '';
       return [{
           text: badgeText,
