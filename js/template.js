@@ -41,7 +41,7 @@ var popupPropose = function(t) {
           text: 'Grant Type',
           callback: function (t) {
             t.popup({
-              url: './endorse.html',
+              url: './grant-type.html',
               height: 184
             })
           }
