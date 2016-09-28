@@ -36,7 +36,7 @@ var popupEndorse = function(t) {
 
 var popupPropose = function(t) {
   return t.popup({
-      title: 'Actions'
+      title: 'Actions',
       items: [{
           text: 'Grant Type',
           callback: function (t) {
