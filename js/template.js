@@ -32,9 +32,7 @@ var getEndorsment = function(t, options) {
     return {
       text: endorsmentState[state],
       callback: function(t, state){
-        return t.card('name')
-        .get('name')
-        .then(function(cardName){
+        return t.render(function(cardName){
           var badgeText = endorsmentState[state];
           var badgeColor = state;
 
