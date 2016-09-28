@@ -27,27 +27,32 @@ var endorsmentState = {
 }
 
 var getEndorsment = function(t, options) {
-  var popupVal = {};
-  var listName = t.list('name').get('name');
-  console.log ("LISTNAME: " + listName);
-  var endorseItems =  [{
-      text: 'Endorse',
-      callback: function (t) {
-        t.popup({
-          url: './endorse.html',
-          height: 184
-        })
-      }
-    }];
 
-  if (listName == 'Qualify') {
-    popupVal = {
-        title: 'Choose Endorsment State',
-        items: endorseItems
-      }
-  }
+  return t.list('name')
+  .get('name')
+  .then(function(listName){
+    console.log ("LISTNAME: " + listName);
+    var popupVal = {};
+    var endorseItems =  [{
+        text: 'Endorse',
+        callback: function (t) {
+          t.popup({
+            url: './endorse.html',
+            height: 184
+          })
+        }
+      }];
 
-  return t.popup(popupVal);
+    if (listName == 'Qualify') {
+      popupVal = {
+          title: 'Choose Endorsment State',
+          items: endorseItems
+        }
+    }
+
+    return t.popup(popupVal);
+  })
+
 }
 
 var getBadges = function(t){
