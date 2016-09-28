@@ -34,6 +34,7 @@ var getEndorsment = function(t, options) {
       callback: getBadges
     };
   });
+};
 
 var getBadges = function(t){
   return t.card('name')
