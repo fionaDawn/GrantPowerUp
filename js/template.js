@@ -36,7 +36,6 @@ var getEndorsment = function(t, options) {
         })
       }
     }]
-  });
 
   return t.popup({
     title: 'Choose Endorsment State',
