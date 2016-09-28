@@ -62,7 +62,7 @@ var getEndorsment = function(t, options) {
 }
 
 var getBadges = function(t){
-  console.log(t.get('board', 'shared', 'pipz'));
+  console.log(JSON.stringify(t.get('board', 'shared', 'pipz')));
   return t.card('name')
   .get('name')
   .then(function(cardName){
