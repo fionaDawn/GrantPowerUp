@@ -20,20 +20,58 @@ var parkMap = {
 };
 
 var popupEndorse = function(t) {
-  var endorseItems =  [{
-      text: 'Endorse',
-      callback: function (t) {
-        t.popup({
-          url: './endorse.html',
-          height: 184
-        })
-      }
-    }];
-
   return t.popup({
       title: 'Choose Endorsment State',
-      items: endorseItems
+      items: [{
+          text: 'Endorse',
+          callback: function (t) {
+            t.popup({
+              url: './endorse.html',
+              height: 184
+            })
+          }
+        }]
     })
+}
+
+var popupPropose = function(t) {
+  return t.popup({
+      title: 'Choose Endorsment State',
+      items: [{
+          text: 'Grant Type',
+          callback: function (t) {
+            t.popup({
+              url: './endorse.html',
+              height: 184
+            })
+          }
+        },
+        {
+          text: 'Purpose',
+          callback: function(t) {
+										t.popup({
+											title: "Nested Options",
+											items: [
+												{text: "Link",url:"https://developers.trello.com/"},
+												{text: "Link",url:"https://developers.trello.com/"}]
+
+										});
+									}
+          }]
+      },
+      {
+          text: 'Proposal',
+          callback: function(t) {
+                    t.popup({
+                      title: "Nested Options",
+                      items: [
+                        {text: "Link",url:"https://developers.trello.com/"},
+                        {text: "Link",url:"https://developers.trello.com/"}]
+
+                    });
+                  }
+        }]
+})
 }
 
 var cardButtonCallback = function(t) {
@@ -44,6 +82,8 @@ var cardButtonCallback = function(t) {
 
     if (listName == 'Qualify') {
       popupEndorse(t);
+    } else if (listName == 'Propose') {
+      popupPropose(t);
     } else {
       [];
     }
