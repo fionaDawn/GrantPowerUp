@@ -31,9 +31,8 @@ var getEndorsment = function(t, options) {
   return t.list('name')
   .get('name')
   .then(function(listName){
-    console.log ("LISTNAME: " + listName);
     var popupVal = {
-      title: 'Please fill in required fields',
+      title: '',
       items: []
     };
     var endorseItems =  [{
@@ -47,13 +46,13 @@ var getEndorsment = function(t, options) {
       }];
 
     if (listName == 'Qualify') {
-      popupVal = {
+      t.popup({
           title: 'Choose Endorsment State',
           items: endorseItems
-        }
+        })
+    } else {
+      return [];
     }
-
-    return t.popup(popupVal);
   })
 
 }
