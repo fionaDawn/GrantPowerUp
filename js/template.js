@@ -44,7 +44,7 @@ var getEndorsment = function(t, options) {
                 icon: WHITE_ICON
               }];
         })
-      };
+      }
     };
   });
 
