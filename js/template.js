@@ -140,10 +140,10 @@ TrelloPowerUp.initialize({
       // url, title, image, openText, modified (Date), created (Date), createdBy, modifiedBy
       return {
         url: options.url,
-        title: parkName,
+        title: 'Test Name',
         image: {
           url: './images/nps.svg',
-          logo: true // false if you are using a thumbnail of the content
+          logo: false // false if you are using a thumbnail of the content
         },
         openText: 'Open in NPS'
       };
@@ -172,19 +172,19 @@ TrelloPowerUp.initialize({
     return getBadges(t);
   },
   'card-from-url': function(t, options) {
-    // var parkName = formatNPSUrl(t, options.url);
-    // if(parkName){
-    //   return {
-    //     name: parkName,
-    //     desc: 'An awesome park: ' + options.url
-    //   };
-    // } else {
-    //   throw t.NotHandled();
-    // }
-    return {
-      name: 'Test name',
-      desc: 'Hi @fiona'
+    var parkName = formatNPSUrl(t, options.url);
+    if(parkName){
+      return {
+        name: parkName,
+        desc: 'An awesome park: ' + options.url
+      };
+    } else {
+      throw t.NotHandled();
     }
+    // return {
+    //   name: 'Test name',
+    //   desc: 'Hi @fiona'
+    // }
   },
   'format-url': function(t, options) {
     var parkName = formatNPSUrl(t, options.url);
