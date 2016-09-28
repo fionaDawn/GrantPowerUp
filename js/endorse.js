@@ -21,7 +21,7 @@ t.render(function(){
 });
 
 document.getElementById('save').addEventListener('click', function(){
-  return t.set('board', 'private', 'vegetable', pipzSelector.value)
+  return t.set('board', 'shared', 'pipz', pipzSelector.value)
   .then(function(){
     t.closePopup();
   })
