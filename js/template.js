@@ -57,21 +57,20 @@ var popupPropose = function(t) {
 
 										});
 									}
-          }]
-      },
-      {
-          text: 'Proposal',
-          callback: function(t) {
-                    t.popup({
-                      title: "Nested Options",
-                      items: [
-                        {text: "Link",url:"https://developers.trello.com/"},
-                        {text: "Link",url:"https://developers.trello.com/"}]
+        },
+        {
+            text: 'Proposal',
+            callback: function(t) {
+                      t.popup({
+                        title: "Nested Options",
+                        items: [
+                          {text: "Link",url:"https://developers.trello.com/"},
+                          {text: "Link",url:"https://developers.trello.com/"}]
 
-                    });
-                  }
+                      });
+                    }
         }]
-})
+    })
 }
 
 var cardButtonCallback = function(t) {
