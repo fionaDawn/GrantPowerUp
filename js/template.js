@@ -58,8 +58,6 @@ var getBadges = function(t){
       } else {
         return [];
       }
-  }).then(function(){
-    return t.closePopup();
   })
 };
 
