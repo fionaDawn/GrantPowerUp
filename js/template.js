@@ -26,32 +26,34 @@ var endorsmentState = {
   yellow: 'strongly fulfills'
 }
 
+var popupEndorse = function() {
+  var endorseItems =  [{
+      text: 'Endorse',
+      callback: function (t) {
+        t.popup({
+          url: './endorse.html',
+          height: 184
+        })
+      }
+    }];
+
+  return t.popup({
+      title: 'Choose Endorsment State',
+      items: endorseItems
+    })
+}
+
 var getEndorsment = function(t, options) {
 
   return t.list('name')
   .get('name')
   .then(function(listName){
-    var popupVal = {
-      title: '',
-      items: []
-    };
-    var endorseItems =  [{
-        text: 'Endorse',
-        callback: function (t) {
-          t.popup({
-            url: './endorse.html',
-            height: 184
-          })
-        }
-      }];
+
 
     if (listName == 'Qualify') {
-      t.popup({
-          title: 'Choose Endorsment State',
-          items: endorseItems
-        })
+      popupEndorse();
     } else {
-      return [];
+      [];
     }
   })
 
