@@ -62,18 +62,25 @@ var getEndorsment = function(t, options) {
 }
 
 var getBadges = function(t){
-  console.log(JSON.stringify(t.get('board', 'shared', 'pipz')));
-  return t.card('name')
-  .get('name')
-  .then(function(cardName){
-    var badgeText = endorsmentState[STATE];
-    var badgeColor = STATE;
+  var stateVal = '';
+  return Promise.all([
+    t.get('card', 'private', 'pipz'),
+  ])
+  .spread(function(savedPipz){
+    if(savedPipz && /[a-z]+/.test(savedPipz)){
+      stateVal = savedPipz;
+    }
+  }).then(function(){
+    if (stateVal == 'does not fullfill')
+      badgeColor = 'red';
+    else if (stateVal == 'fulfills')
+      badgeColor = 'green';
+    else if (stateVal == 'strongly fulfills')
+      badgeColor = 'yellow';
 
-    // if (STATE !== '') {
-    if (cardName == 'Grant Ash') {
-      STATE = '';
+    if (stateVal !== '') {
       return [{
-          text: badgeText,
+          text: stateVal,
           color: badgeColor,
           icon: WHITE_ICON
         }];

@@ -7,7 +7,7 @@ var pipzSelector = document.getElementById('pipz');
 
 t.render(function(){
   return Promise.all([
-    t.get('board', 'shared', 'pipz'),
+    t.get('card', 'private', 'pipz'),
   ])
   .spread(function(savedPipz){
     if(savedPipz && /[a-z]+/.test(savedPipz)){
@@ -21,7 +21,7 @@ t.render(function(){
 });
 
 document.getElementById('save').addEventListener('click', function(){
-  return t.set('board', 'shared', 'pipz', pipzSelector.value)
+  return t.set('card', 'private', 'pipz', pipzSelector.value)
   .then(function(){
     t.closePopup();
   })
