@@ -122,7 +122,12 @@ var getBadges = function(t){
       return [{
           title: 'Grant Type',
           text: grantType,
-          url: './grant-type.html'
+          callback: function (t) {
+            t.popup({
+              url: './grant-type.html',
+              height: 184
+            })
+          }
         }];
       } else {
         return [];
