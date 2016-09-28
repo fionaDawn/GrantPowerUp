@@ -34,7 +34,12 @@ var getEndorsment = function(t, options) {
       callback: getBadges
     };
   });
-};
+
+  return t.popup({
+    title: 'Choose Endorsment State',
+    items: items
+  });
+}
 
 var getBadges = function(t){
   return t.card('name')
