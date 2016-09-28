@@ -27,32 +27,15 @@ var endorsmentState = {
 }
 
 var getEndorsment = function(t, options) {
-  var items = Object.keys(endorsmentState).map(function(state){
-    STATE = state;
-    return {
-      text: endorsmentState[state],
-      // callback: function(t, options){
-      //   return t.card('name')
-      //   .get('name')
-      //   .then(function(cardName){
-      //     console.log(options.context.command)
-      //     var badgeText = endorsmentState[state];
-      //     var badgeColor = state;
-      //
-      //       return [{
-      //           text: badgeText,
-      //           color: badgeColor,
-      //           icon: WHITE_ICON
-      //         }];
-      //   })
-      // }
+  var items =  [{
+      text: 'Endorse',
       callback: function (t) {
         t.popup({
           url: './endorse.html',
           height: 184
         })
       }
-    };
+    }]
   });
 
   return t.popup({
