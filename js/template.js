@@ -31,7 +31,20 @@ var getEndorsment = function(t, options) {
     STATE = state;
     return {
       text: endorsmentState[state],
-      callback: getBadges
+      callback: function(t, state){
+        return t.card('name')
+        .get('name')
+        .then(function(cardName){
+          var badgeText = endorsmentState[state];
+          var badgeColor = state;
+
+            return [{
+                text: badgeText,
+                color: badgeColor,
+                icon: WHITE_ICON
+              }];
+        })
+      };
     };
   });
 
