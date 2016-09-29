@@ -133,7 +133,7 @@ var formatNPSUrl = function(t, url){
 
 var boardButtonCallback = function(t){
   return t.boardBar({
-    url: 'http://trello.com'
+    url: 'https://trello.com'
   });
 };
 
