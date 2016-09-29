@@ -133,7 +133,7 @@ var formatNPSUrl = function(t, url){
 
 var boardButtonCallback = function(t){
   return t.boardBar({
-    url: 'https://apps.savvysherpa.com',
+    url: 'https://apps.savvysherpa.com/timetracker/TimeEntry.aspx',
     height: 1000
   });
 };
