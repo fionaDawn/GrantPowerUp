@@ -105,7 +105,9 @@ var getBadges = function(t){
     }
 
   }).then(function(){
+    var noBadge = true;
     if (stateVal !== '') {
+      noBadge = false;
       if (stateVal == 'does not fulfill')
         badgeColor = 'red';
       else if (stateVal == 'fulfills')
@@ -118,7 +120,10 @@ var getBadges = function(t){
           color: badgeColor,
           icon: WHITE_ICON
         }];
-      } else if (grantType) {
+      }
+
+      if (grantType) {
+        noBadge = false;
         return [{
             title: 'Grant Type',
             text: grantType,
@@ -129,7 +134,10 @@ var getBadges = function(t){
               })
             }
           }];
-      } else if (purpose) {
+      }
+
+      if (purpose) {
+        noBadge = false;
         return [{
           title: 'Purpose',
           text: purpose,
@@ -140,7 +148,8 @@ var getBadges = function(t){
             })
           }
         }]
-      } else {
+
+      if (noBadge) {
         return [];
       }
   })
