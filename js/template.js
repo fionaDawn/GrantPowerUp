@@ -148,6 +148,7 @@ var getBadges = function(t){
             })
           }
         }]
+      }
 
       if (noBadge) {
         return [];
