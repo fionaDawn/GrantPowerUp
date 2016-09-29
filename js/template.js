@@ -102,20 +102,16 @@ var getBadges = function(t){
         }];
       } else if (initiative) {
         return [{
-            title: 'Initiative',
-            text: initiative
+            text: 'Initiative: ' + initiative
           },
           {
-            title: 'Client',
-            text: client
+            text: 'Client: ' + client
           },
           {
-            title: 'Grant Type',
-            text: grantType
+            text: 'Grant Type: ' + grantType
           },
           {
-            title: 'Purpose',
-            text: purpose
+            text: 'Purpose: ' + purpose
           }];
       } else {
         return [];
