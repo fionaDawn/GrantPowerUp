@@ -38,34 +38,13 @@ var popupPropose = function(t) {
   return t.popup({
       title: 'Actions',
       items: [{
-          text: 'Grant Type',
+          text: 'Update Grant',
           callback: function (t) {
             t.popup({
-              url: './grant-type.html',
+              url: './grant-propose.html',
               height: 184
             })
           }
-        },
-        {
-          text: 'Purpose',
-          callback: function (t) {
-            t.popup({
-              url: './purpose.html',
-              height: 184
-            })
-          }
-        },
-        {
-            text: 'Proposal',
-            callback: function(t) {
-                      t.popup({
-                        title: "Nested Options",
-                        items: [
-                          {text: "Link",url:"https://developers.trello.com/"},
-                          {text: "Link",url:"https://developers.trello.com/"}]
-
-                      });
-                    }
         }]
     })
 }
@@ -89,16 +68,20 @@ var cardButtonCallback = function(t) {
 
 var getBadges = function(t){
   var stateVal = '';
-  var grantType, purpose;
+  var initiative, client, grantType, purpose;
   return Promise.all([
     t.get('card', 'private', 'pipz'),
+    t.get('card', 'private', 'initiative'),
+    t.get('card', 'private', 'client'),
     t.get('card', 'private', 'gType'),
     t.get('card', 'private', 'purpose')
   ])
-  .spread(function(savedPipz, savedGtype, savedPurpose){
+  .spread(function(savedInitiative, savedClient, savedPipz, savedGtype, savedPurpose){
     if(savedPipz && /[a-z]+/.test(savedPipz)){
       stateVal = savedPipz;
-    } else if(savedGtype && /[a-z]+/.test(savedGtype)){
+    } else if(savedInitiative && /[a-z]+/.test(savedInitiative)){
+      initiative = savedInitiative;
+      client = savedClient;
       grantType = savedGtype;
       purpose = savedPurpose;
     }
@@ -117,26 +100,22 @@ var getBadges = function(t){
           color: badgeColor,
           icon: WHITE_ICON
         }];
-      } else if (grantType) {
+      } else if (savedInitiative) {
         return [{
+            title: 'Initiative',
+            text: initiative
+          },
+          {
+            title: 'Client',
+            text: client
+          },
+          {
             title: 'Grant Type',
-            text: grantType,
-            callback: function (t) {
-              t.popup({
-                url: './grant-type.html',
-                height: 184
-              })
-            }
+            text: grantType
           },
           {
             title: 'Purpose',
-            text: purpose,
-            callback: function (t) {
-              t.popup({
-                url: './purpose.html',
-                height: 184
-              })
-            }
+            text: purpose
           }];
       } else {
         return [];
