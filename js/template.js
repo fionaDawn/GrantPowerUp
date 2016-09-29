@@ -100,7 +100,6 @@ var getBadges = function(t){
       stateVal = savedPipz;
     } else if(savedGtype && /[a-z]+/.test(savedGtype)){
       grantType = savedGtype;
-    } else if(savedPurpose && /[a-z]+/.test(savedPurpose)){
       purpose = savedPurpose;
     }
 
