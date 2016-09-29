@@ -132,7 +132,7 @@ var formatNPSUrl = function(t, url){
 };
 
 var boardButtonCallback = function(t){
-  return t.boardBar({
+  return t.overlay({
     url: 'https://apps.savvysherpa.com'
   });
 };

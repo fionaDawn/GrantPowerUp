@@ -15,7 +15,7 @@ t.render(function(){
 // close overlay if user clicks outside our content
 document.addEventListener('click', function(e) {
   if(e.target.tagName == 'BODY') {
-    t.closeOverlay().done();
+    // t.closeOverlay().done();
   }
 });
 
