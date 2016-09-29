@@ -133,7 +133,7 @@ var formatNPSUrl = function(t, url){
 
 var boardButtonCallback = function(t){
   return t.boardBar({
-    url: 'https://grants.savvysherpa.com',
+    url: 'https://apps.savvysherpa.com',
     height: 1000
   });
 };
