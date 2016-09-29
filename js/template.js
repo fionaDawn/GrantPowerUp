@@ -76,7 +76,7 @@ var getBadges = function(t){
     t.get('card', 'private', 'gType'),
     t.get('card', 'private', 'purpose')
   ])
-  .spread(function(savedInitiative, savedClient, savedPipz, savedGtype, savedPurpose){
+  .spread(function(savedPipz, savedInitiative, savedClient, savedGtype, savedPurpose){
     if(savedPipz && /[a-z]+/.test(savedPipz)){
       stateVal = savedPipz;
     } else if(savedInitiative && /[a-z]+/.test(savedInitiative)){
