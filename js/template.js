@@ -100,7 +100,7 @@ var getBadges = function(t){
           color: badgeColor,
           icon: WHITE_ICON
         }];
-      } else if (savedInitiative) {
+      } else if (initiative) {
         return [{
             title: 'Initiative',
             text: initiative
