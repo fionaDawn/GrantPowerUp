@@ -19,36 +19,6 @@ var parkMap = {
   zion: 'Zion National Park'
 };
 
-var popupEndorse = function(t) {
-  return t.popup({
-      title: 'Choose Endorsment State',
-      items: [{
-          text: 'Endorse',
-          callback: function (t) {
-            t.popup({
-              url: './endorse.html',
-              height: 184
-            })
-          }
-        }]
-    })
-}
-
-var popupPropose = function(t) {
-  return t.popup({
-      title: 'Actions',
-      items: [{
-          text: 'Update Grant',
-          callback: function (t) {
-            t.popup({
-              url: './grant-propose.html',
-              height: 184
-            })
-          }
-        }]
-    })
-}
-
 var cardButtonCallback = function(t) {
   return t.list('name')
   .get('name')
@@ -69,7 +39,15 @@ var cardButtonCallback = function(t) {
               url: './overlay.html'
             })
           }
-        }];
+        },
+				{
+					text: "Authorize with Trello",
+					callback: function(t) {
+						t.popup({
+							title: "Auth needed",
+							url: 'auth-popup.html'});
+						}
+				}];
 
     if (listName == 'Qualify') {
       var endorsItem = {
