@@ -53,15 +53,42 @@ var cardButtonCallback = function(t) {
   return t.list('name')
   .get('name')
   .then(function(listName){
-
+    var items = [{
+        text: 'Update Grant',
+        callback: function (t) {
+          t.popup({
+            url: './grant-propose.html',
+            height: 184
+          })
+        }
+      },
+      {
+          text: 'Show Overlay',
+          callback: function (t) {
+            t.overlay({
+              url: './grant-propose.html'
+            })
+          }
+        }];
 
     if (listName == 'Qualify') {
-      popupEndorse(t);
-    } else if (listName == 'Propose') {
-      popupPropose(t);
-    } else {
-      [];
+      var endorsItem = {
+          text: 'Endorse',
+          callback: function (t) {
+            t.popup({
+              url: './endorse.html',
+              height: 184
+            })
+          }
+        }
+
+      items.push(endorsItem);
     }
+
+    return t.popup({
+        title: 'Actions',
+        items: items
+      })
   })
 
 }
