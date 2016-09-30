@@ -66,7 +66,7 @@ var cardButtonCallback = function(t) {
           text: 'Show Overlay',
           callback: function (t) {
             t.overlay({
-              url: './grant-propose.html'
+              url: './overlay.html'
             })
           }
         }];
