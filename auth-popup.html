@@ -26,7 +26,7 @@ var authenticationFailure = function() {
 };
 
 var myAuth = function() {
-  return Promise.all([
+  Promise.all([
     t.get('organization', 'private', 'token'),
     t.get('board', 'private', 'token')
   ])
