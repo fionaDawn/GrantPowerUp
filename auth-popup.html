@@ -3,56 +3,27 @@
 <!-- Trello Power-Up Library -->
 <script src="https://trello.com/power-ups/power-up.min.js"></script>
 <link rel="stylesheet" href="https://trello.com/power-ups/power-up.css"/>
-
-<!-- Trello API Library + Dependency -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://trello.com/1/client.js?key=a267df60cf977e2cba2f06aee16c8e0e"></script>
 <script>
 var t = TrelloPowerUp.iframe();
-var Promise = TrelloPowerUp.Promise;
-var secret;
-var authenticationSuccess = function() {
-  return t.set('organization', 'private', 'token', Trello.token())
-  .catch(t.NotHandled, function(){
-    return t.set('board', 'private', 'token', Trello.token())
-  })
-  .then(function(){
-    t.closePopup();
-  });
-};
-
-var authenticationFailure = function() {
-	console.log("Failed authentication");
-};
-
 var myAuth = function() {
-  Promise.all([
-    t.get('organization', 'private', 'token'),
-    t.get('board', 'private', 'token')
-  ])
-  .spread(function(token, savedToken){
-    if(token && /[a-z]+/.test(token)){
-      console.log("OrgToken: " + token);
-    } else if(savedToken && /[a-z]+/.test(savedToken)){
-      console.log("BoardToken: " + token);
-    }
+  t.authorize(function(secret) {
+      console.log(secret);
+      return './auth-window.html?secret=' + secret;
   })
-  .then(function(){
-    t.authorize(function(secret) {
-        console.log(secret);
-        return Trello.authorize({
-      	  type: "popup",
-      	  name: "Getting Started Application",
-      	  scope: {
-      	    read: true,
-      	    write: true },
-      	  expiration: "never",
-      	  success: authenticationSuccess,
-      	  error: authenticationFailure
-      	});
-        // return './auth-window.html?secret=' + secret;
-    });
+  .then(function(token){
+    return t.set('organization', 'private', 'token', token)
+    .catch(t.NotHandled, function(){
+      return t.set('board', 'private', 'token', token)
+    })
   })
+  .then(function(result) {
+  	// This won't work until the secrets match
+  	console.log('got back:', result);
+  	t.closePopup();
+  }, function(error) {
+  	console.log("Promise rejected with ", error);
+  	t.closePopup();
+  });
 };
 </script>
 
