@@ -92,7 +92,7 @@ var getBadges = function(t){
       purpose = savedPurpose;
     }
     if(savedToken && /[a-z]+/.test(savedToken)){
-      console.log("OrgToken:" savedToken);
+      console.log("OrgToken:" + savedToken);
     }
 
   }).then(function(){
