@@ -40,7 +40,7 @@ var authenticationFailure = function() {
 
 var authorize = function() {
 	Trello.authorize({
-	  type: "popup",
+	  type: "redirect",
 	  name: "Getting Started Application",
 	  scope: {
 	    read: true,
@@ -51,7 +51,7 @@ var authorize = function() {
 	});
 };
 
-$( document ).ready(authenticationSuccess());
+// $( document ).ready(authenticationSuccess());
 </script>
 
 <style>
