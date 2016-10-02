@@ -23,7 +23,7 @@ var authenticationSuccess = function() {
 	IO = new TrelloPowerUp.PostMessageIO({
 		local: window,
 		remote: window.opener,
-		// targetOrigin: 'https://fionadawn.github.io',
+		targetOrigin: 'https://fionadawn.github.io',
 		// You will need to replace this secret with the query string parameter you received.
 		secret: getURLParameter('secret')
 	});
