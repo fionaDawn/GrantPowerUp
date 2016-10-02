@@ -29,9 +29,9 @@ var authenticationSuccess = function() {
 	});
 	IO.request('value', JSON.stringify(Trello.token()))
 	.timeout(1000);
-	// .then(function(){
-	// 		window.close();
-	// });
+	.then(function(){
+			window.close();
+	});
 };
 var authenticationFailure = function() {
 	console.log("Failed authentication");
