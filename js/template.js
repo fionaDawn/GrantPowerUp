@@ -79,9 +79,10 @@ var getBadges = function(t){
     t.get('card', 'private', 'initiative'),
     t.get('card', 'private', 'client'),
     t.get('card', 'private', 'gType'),
-    t.get('card', 'private', 'purpose')
+    t.get('card', 'private', 'purpose'),
+    t.get('organization', 'private', 'token', token)
   ])
-  .spread(function(savedPipz, savedInitiative, savedClient, savedGtype, savedPurpose){
+  .spread(function(savedPipz, savedInitiative, savedClient, savedGtype, savedPurpose, savedToken){
     if(savedPipz && /[a-z]+/.test(savedPipz)){
       stateVal = savedPipz;
     } else if(savedInitiative && /[a-z]+/.test(savedInitiative)){
@@ -89,6 +90,9 @@ var getBadges = function(t){
       client = savedClient;
       grantType = savedGtype;
       purpose = savedPurpose;
+    }
+    if(savedToken && /[a-z]+/.test(savedToken)){
+      console.log("OrgToken:" savedToken);
     }
 
   }).then(function(){
