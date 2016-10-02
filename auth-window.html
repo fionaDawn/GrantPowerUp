@@ -18,6 +18,7 @@ var getURLParameter = function(name) {
 
 var authenticationSuccess = function() {
 	console.log("Successful authentication. Token is:" + Trello.token());
+  console.log(window.opener);
 
 	IO = new TrelloPowerUp.PostMessageIO({
 		local: window,
