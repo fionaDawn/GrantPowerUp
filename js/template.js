@@ -80,7 +80,7 @@ var getBadges = function(t){
     t.get('card', 'private', 'client'),
     t.get('card', 'private', 'gType'),
     t.get('card', 'private', 'purpose'),
-    t.get('organization', 'private', 'token', token)
+    t.get('organization', 'private', 'token')
   ])
   .spread(function(savedPipz, savedInitiative, savedClient, savedGtype, savedPurpose, savedToken){
     if(savedPipz && /[a-z]+/.test(savedPipz)){
