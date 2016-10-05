@@ -142,7 +142,7 @@ var formatNPSUrl = function(t, url){
 
 var boardButtonCallback = function(t){
   return t.boardBar({
-    url: 'https://grants.savvysherpa.com/',
+    url: 'https://grant-flow.firebaseapp.com/#/new',
     height: 1000
   });
 };
