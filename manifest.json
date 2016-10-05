@@ -20,7 +20,8 @@
   ],
   "connectors": {
     "iframe": {
-      "url": "./index.html"
+      "url": "./index.html",
+      "target": "_top"
     }
   },
   "recommend": {
