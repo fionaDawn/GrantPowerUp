@@ -143,7 +143,7 @@ var formatNPSUrl = function(t, url){
 var boardButtonCallback = function(t){
   return t.boardBar({
     url: 'https://grant-flow.firebaseapp.com/#/new',
-    height: 1000
+    height: 500
   });
 };
 
